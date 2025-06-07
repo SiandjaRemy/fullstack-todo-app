@@ -8,7 +8,7 @@ const {
   updateTodo,
   deleteTodo,
   patchTodo,
-} = require("../controller/todoController");
+} = require("../controllers/todoControllers");
 
 // get all the todos
 router.get("/", getAllTodos);
