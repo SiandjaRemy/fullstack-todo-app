@@ -1,0 +1,18 @@
+<div *ngIf="error" class="p-4 mb-4 bg-red-50 border-l-4 border-red-500 rounded">
+  <div class="flex">
+    <div class="ml-3">
+      <h3 class="text-sm font-medium text-red-800">An Error Occurred</h3>
+      <div class="mt-2 text-sm text-red-700">
+        <p>{{ error }}</p>
+      </div>
+      <div *ngIf="errorSource === 'load'" class="mt-4">
+        <button
+          (click)="retry.emit()"
+          class="flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200"
+        >
+          Click to retry
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
