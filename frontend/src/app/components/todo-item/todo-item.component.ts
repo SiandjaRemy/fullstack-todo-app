@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TodoItemComponent {
   @Input() todo!: Todo;
+  @Input() editingTodo!: Todo | null;
   @Output() toggleComplete = new EventEmitter<Todo>();
   @Output() edit = new EventEmitter<Todo>();
   @Output() delete = new EventEmitter<number>();

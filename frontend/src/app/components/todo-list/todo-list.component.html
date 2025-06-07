@@ -17,15 +17,6 @@
     <app-loader></app-loader>
   </div>
 
-  <!-- Error component -->
-  <div *ngIf="error && initialized">
-    <app-error-message
-      [error]="error"
-      [errorSource]="errorSource"
-      (retry)="loadTodos()"
-    ></app-error-message>
-  </div>
-
   <div *ngIf="initialized && !loading && !error">
     <!-- Empty todo list placeholder -->
     <div
@@ -33,7 +24,7 @@
       class="text-center p-8 bg-white rounded-lg shadow"
     >
       <h2 class="mt-4 text-lg text-center font-medium text-gray-900">
-        No todos found. Add a new task to get started.
+        No todos found. Add a new task with just a title.
       </h2>
     </div>
 
@@ -41,9 +32,19 @@
     <app-todo-item
       *ngFor="let todo of todos"
       [todo]="todo"
+      [editingTodo]="editingTodo"
       (toggleComplete)="toggleComplete($event)"
       (delete)="deleteTodo($event)"
       (edit)="startEdit($event)"
     ></app-todo-item>
+  </div>
+
+  <!-- Error component -->
+  <div *ngIf="error && initialized">
+    <app-error-message
+      [error]="error"
+      [errorSource]="errorSource"
+      (retry)="loadTodos()"
+    ></app-error-message>
   </div>
 </div>

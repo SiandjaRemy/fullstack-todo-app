@@ -15,7 +15,10 @@
         >
           {{ todo.title }}
         </h3>
-        <p *ngIf="todo.description" class="text-sm text-gray-600 mt-1">
+        <p
+          *ngIf="todo.description"
+          class="text-sm text-gray-600 mt-1 line-clamp-2"
+        >
           {{ todo.description }}
         </p>
         <div class="flex items-center text-sm text-gray-500 mt-2">
@@ -24,7 +27,7 @@
         </div>
       </div>
     </div>
-    <div class="flex space-x-2">
+    <div *ngIf="!editingTodo" class="flex space-x-2">
       <button
         (click)="edit.emit(todo)"
         class="text-blue-600 hover:text-blue-800"
