@@ -1,3 +1,49 @@
-<div class="flex">
-  <app-loader></app-loader>
+<div class="max-w-2xl mx-auto p-4">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">My Todo List</h1>
+
+  <!-- Form to add a new todo -->
+  <app-todo-form *ngIf="!editingTodo" (add)="addTodo($event)"></app-todo-form>
+
+  <!-- Form to edit a new todo -->
+  <app-todo-form
+    *ngIf="editingTodo"
+    [todo]="editingTodo"
+    (edit)="updateTodo($event)"
+    (cancel)="cancelEdit()"
+  ></app-todo-form>
+
+  <!-- Loading component for  -->
+  <div *ngIf="loading">
+    <app-loader></app-loader>
+  </div>
+
+  <!-- Error component -->
+  <div *ngIf="error && initialized">
+    <app-error-message
+      [error]="error"
+      [errorSource]="errorSource"
+      (retry)="loadTodos()"
+    ></app-error-message>
+  </div>
+
+  <div *ngIf="initialized && !loading && !error">
+    <!-- Empty todo list placeholder -->
+    <div
+      *ngIf="todos.length === 0"
+      class="text-center p-8 bg-white rounded-lg shadow"
+    >
+      <h2 class="mt-4 text-lg text-center font-medium text-gray-900">
+        No todos found. Add a new task to get started.
+      </h2>
+    </div>
+
+    <!-- Todo items iteration -->
+    <app-todo-item
+      *ngFor="let todo of todos"
+      [todo]="todo"
+      (toggleComplete)="toggleComplete($event)"
+      (delete)="deleteTodo($event)"
+      (edit)="startEdit($event)"
+    ></app-todo-item>
+  </div>
 </div>

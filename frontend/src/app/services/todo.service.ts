@@ -97,7 +97,7 @@ export class TodoService {
       );
   }
 
-  //  error handler
+  // error handler
   private handleError(error: HttpErrorResponse) {
     console.log('error', error);
     if (error.status === 0) {

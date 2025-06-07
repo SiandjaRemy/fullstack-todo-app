@@ -4,12 +4,22 @@ import { TodoService } from '../../services/todo.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../loader/loader.component';
+import { ErrorMessageComponent } from '../error-message/error-message.component';
+import { TodoFormComponent } from '../todo-form/todo-form.component';
+import { TodoItemComponent } from '../todo-item/todo-item.component';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   standalone: true,
-  imports: [FormsModule, CommonModule, LoaderComponent],
+  imports: [
+    FormsModule,
+    CommonModule,
+    LoaderComponent,
+    ErrorMessageComponent,
+    TodoFormComponent,
+    TodoItemComponent,
+  ],
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
