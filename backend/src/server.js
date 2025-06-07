@@ -26,6 +26,9 @@ sequelize
 
 app.use(express.json());
 
+// Custom error handling middleware
+app.use(errorHandling);
+
 // Todo routes
 app.use("/api/todos", todoRoutes);
 
