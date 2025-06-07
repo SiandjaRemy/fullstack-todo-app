@@ -84,7 +84,7 @@ export class TodoListComponent implements OnInit {
   }
 
   toggleComplete(todo: Todo): void {
-    this.todoService.updateTodo(todo.id, todo).subscribe({
+    this.todoService.patchTodo(todo.id, todo).subscribe({
       next: (updatedTodo) => {
         const index = this.todos.findIndex((t) => t.id === updatedTodo.id);
         if (index !== -1) {
