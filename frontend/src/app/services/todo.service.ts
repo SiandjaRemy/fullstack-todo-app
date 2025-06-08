@@ -109,15 +109,14 @@ export class TodoService {
       );
     }
 
-    if (error.statusText) {
-      return throwError(
-        () => new Error(`${error.statusText}: ${error.error.error}`)
-      );
-    }
-
     if (error.error?.message) {
       return throwError(
         () => new Error(`${error.error.message}: ${error.error.details[0]}`)
+      );
+    }
+    if (error.statusText) {
+      return throwError(
+        () => new Error(`${error.statusText}: ${error.error.error}`)
       );
     }
 

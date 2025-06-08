@@ -34,7 +34,7 @@ This repository contains a simple fullstack todo list application built with:
 
 ```bash
 git clone https://github.com/SiandjaRemy/fullstack-todo-app.git
-cd fullstack-todo/backend
+cd fullstack-todo-app/backend
 ```
 
 2. Install dependencies:

@@ -17,6 +17,9 @@
         placeholder="What needs to be done?"
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
       />
+      <div *ngIf="titleShort" class="text-red-500 text-sm">
+        Title must be at least 5 characters long.
+      </div>
     </div>
 
     <div>
@@ -61,6 +64,9 @@
         minlength="5"
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
       />
+      <div *ngIf="titleShort" class="text-red-500 text-sm">
+        Title must be at least 5 characters long.
+      </div>
     </div>
     <div>
       <label class="block text-sm font-medium text-gray-700">Description</label>

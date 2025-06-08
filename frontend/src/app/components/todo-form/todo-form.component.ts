@@ -31,7 +31,10 @@ export class TodoFormComponent implements OnChanges {
   editedDescription = '';
   isEditing = false;
 
+  titleShort = false;
+
   ngOnChanges(changes: SimpleChanges): void {
+    this.titleShort = false;
     if (changes['todo'] && this.todo) {
       this.editedTitle = this.todo.title;
       this.editedDescription = this.todo.description || '';
@@ -40,15 +43,20 @@ export class TodoFormComponent implements OnChanges {
 
   saveAdd(): void {
     if (!this.title.trim()) return;
-    this.isAdding = true;
+    if (this.title.length < 5) {
+      this.titleShort = true;
+    } else {
+      this.isAdding = true;
 
-    this.add.emit({
-      title: this.title,
-      description: this.description || undefined,
-    });
+      this.add.emit({
+        title: this.title,
+        description: this.description || undefined,
+      });
 
-    this.resetForm();
-    this.isAdding = false;
+      this.resetForm();
+      this.isAdding = false;
+      this.titleShort = false;
+    }
   }
 
   resetForm(): void {
@@ -58,15 +66,20 @@ export class TodoFormComponent implements OnChanges {
 
   saveEdit(): void {
     if (!this.todo) return;
-
-    this.isEditing = true;
-    const updatedTodo = {
-      ...this.todo,
-      title: this.editedTitle,
-      description: this.editedDescription || null,
-    };
-    this.edit.emit(updatedTodo);
-    this.isEditing = false;
+    if (this.editedTitle.length < 5) {
+      this.titleShort = true;
+      return;
+    } else {
+      this.isEditing = true;
+      const updatedTodo = {
+        ...this.todo,
+        title: this.editedTitle,
+        description: this.editedDescription || null,
+      };
+      this.edit.emit(updatedTodo);
+      this.isEditing = false;
+      this.titleShort = false;
+    }
   }
 
   onCancel(): void {
