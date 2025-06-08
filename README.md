@@ -45,12 +45,14 @@ npm install
 
 3. Create a `.env.local` file based on `.env.example` and fill in your local PostgreSQL credentials:
 
+```
    PORT=5001
    DB_USER=your_postgres_user
    DB_PASSWORD=your_postgres_password
    DB_NAME=your_db_name
    DB_HOST=localhost
    DB_PORT=5432
+```
 
 4. Start your local PostgreSQL server and ensure the database exists.
 
