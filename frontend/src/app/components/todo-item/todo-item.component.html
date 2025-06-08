@@ -5,6 +5,7 @@
         type="checkbox"
         [checked]="todo.completed"
         (change)="toggleComplete.emit(todo)"
+        [disabled]="editingTodo"
         class="h-5 w-5 text-blue-600 rounded mt-1 focus:ring-blue-500"
       />
       <div class="flex-grow">
