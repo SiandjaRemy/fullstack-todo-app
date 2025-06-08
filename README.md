@@ -18,6 +18,10 @@ This repository contains a simple fullstack todo list application built with:
 
 ---
 
+![app-screenshot](https://github.com/user-attachments/assets/f8e0c927-4ee7-47ad-9740-9776d67f3504)
+
+---
+
 ## Requiremtns
 
 - Node.js v22.12.0+
